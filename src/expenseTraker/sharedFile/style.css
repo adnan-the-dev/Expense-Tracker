@@ -1,0 +1,126 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  /* background-color: #f7f7f7; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+.container-box {
+  height: 600px;
+  width: 500px;
+  border: 1px solid red;
+  text-align: center;
+}
+h1 {
+  letter-spacing: 1px;
+}
+.payment-box {
+  display: flex;
+  justify-content: space-between;
+  margin: 4px 0;
+  padding: 12px 8rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+.payment-section {
+  padding: 0px 12px;
+}
+.money {
+  font-size: 20px;
+  letter-spacing: 1px;
+  margin: 5px 0;
+}
+.money.plus {
+  color: #b6960a;
+  font-weight: 700;
+}
+.money.minus {
+  color: #2da3ad;
+  font-weight: 700;
+}
+
+h4 {
+  margin: 0;
+  text-align: center;
+}
+h3 {
+  border-bottom: 1px solid #bbb;
+  padding-bottom: 10px;
+  margin: 30px 0 10px;
+}
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 40px;
+}
+.list li.plus {
+  /* border-right: 5px solid #b6960a; */
+}
+.list {
+  background-color: #fff;
+  border-right: 5px solid #b6960a;
+  box-shadow: 0 4px 3px rgba(207, 243, 5, 0.747);
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 10px;
+  margin: 10px 0;
+}
+.list-style {
+  padding: 0px 12px;
+}
+.scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.scroller {
+  height: 200px;
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
+label {
+  display: inline-block;
+  margin: 10px 0;
+  font-weight: 700;
+}
+input[type="number"] {
+  display: block;
+  font-size: 16px;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #dedede;
+  border-radius: 5px;
+}
+input[type="text"] {
+  display: block;
+  font-size: 16px;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #dedede;
+  border-radius: 5px;
+}
+.btn {
+  display: block;
+  font-size: 16px;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+  background-color: #b0c4de;
+  /* box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24); */
+  box-shadow: var(--box-shadow);
+  color: #fff;
+  border: 0;
+  margin: 10px 0 30px;
+  font-weight: 700;
+}
+.get-form {
+  padding: 0px 12px;
+}
