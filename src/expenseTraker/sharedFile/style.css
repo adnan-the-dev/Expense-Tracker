@@ -72,23 +72,6 @@ h3 {
   margin-bottom: 40px;
 }
 
-/* .greater-then {
-  background-color: #fff;
-  list-style: none;
-  border-right: 5px solid #b6960a;
-  box-shadow: 0 4px 3px rgba(207, 243, 5, 0.747);
-  box-shadow: 0 8px 8px -4px rgba(207, 243, 5, 0.747);
-  color: #333;
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  padding: 10px;
-  margin: 10px 10px;
-  width: 100%;
-}
-.greater-then:hover {
-  background-color: #abb47bbd;
-} */
 /* **********.greater-then************** */
 
 .greater-then {
@@ -97,7 +80,7 @@ h3 {
   list-style: none;
   width: 100%;
   padding: 10px;
-  margin: 10px 10px;
+  margin: 10px 0px;
   border-right: 5px solid #b6960a;
   background-color: #fff;
   box-shadow: 0 8px 8px -4px rgba(198, 206, 154, 0.747);
@@ -124,7 +107,7 @@ h3 {
 
 .greater-then:hover:after {
   width: 100%;
-  /* box-shadow: 0 8px 8px -4px rgba(207, 243, 5, 0.747); */
+  box-shadow: 0 8px 8px -4px rgba(207, 243, 5, 0.747);
 }
 
 /* ************.less-then********** */
@@ -134,7 +117,7 @@ h3 {
   list-style: none;
   width: 100%;
   padding: 10px;
-  margin: 10px 10px;
+  margin: 10px 0px;
   border-right: 5px solid #2da3ad;
   background-color: #fff;
   box-shadow: 0 8px 8px -4px lightblue;
@@ -161,30 +144,19 @@ h3 {
 
 .less-then:hover:after {
   width: 100%;
-  /* box-shadow: 0 8px 8px -4px rgb(100, 147, 163); */
+  box-shadow: 0 8px 8px -4px rgb(100, 147, 163);
 }
 
 
 .history-box {
   display: flex;
   align-items: center;
-  position: relative;
 }
 
 .hide {
-  display: none;
-  position: absolute;
-  /* z-index: 99; */
+  display: flex;
+  z-index: 99;
 }
-
-.history-box:hover .hide {
-  display: inline;
-  cursor: pointer;
-}
-
-
-
-
 .list-style {
   padding: 0px 12px;
 }
