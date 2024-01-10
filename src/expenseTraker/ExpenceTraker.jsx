@@ -1,41 +1,46 @@
 import React, { useState } from "react";
 import "./sharedFile/style.css";
-import deleteIcon from '../assets/react.svg'
+import deleteIcon from "../assets/react.svg";
 import { useForm } from "react-hook-form";
 export const ExpenceTraker = () => {
   const [transactionData, setTransactionData] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const { register, handleSubmit } = useForm()
-  const getData = (newData) => {
-    setTransactionData([...transactionData, newData])
-
-  }
-  let totalAmount = 0
+  const [searchQuery, setSearchQuery] = useState("");
+  const { register, handleSubmit } = useForm();
+  const getData = (newData, e) => {
+    setTransactionData([...transactionData, newData]);
+    e.target.reset();
+  };
+  let totalAmount = 0;
+  let expense = 0;
+  let income = 0;
   for (let i = 0; i < transactionData.length; i++) {
-    totalAmount += Number(transactionData[i].amount)
+    const value = Number(transactionData[i].amount);
+    totalAmount += value;
+    if (value < 0) {
+      expense -= value;
+    } else {
+      income += value;
+    }
   }
-
 
   function deleteHistory(i) {
-    let total = [...transactionData]
-    total.splice(i, 1)
-    setTransactionData(total)
-
+    let total = [...transactionData];
+    total.splice(i, 1);
+    setTransactionData(total);
   }
 
   // **************Serch history***********
   const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value)
-  }
+    setSearchQuery(e.target.value);
+  };
   const filteredArray = transactionData?.filter((array) =>
     searchQuery
       .toLowerCase()
-      .split(' ')
+      .split(" ")
       .every((term) => {
         return array?.description?.toLowerCase().includes(term);
       })
   );
-
 
   return (
     <>
@@ -50,36 +55,48 @@ export const ExpenceTraker = () => {
           <div className="payment-box">
             <div>
               <h4>INCOME</h4>
-              <p className="money plus">
-                {totalAmount.toFixed(2) || " 0.00"}
-              </p>
+              <p className="money plus">{income.toFixed(2) || " 0.00"}</p>
             </div>
             <hr />
             <div>
               <h4>EXPENSE</h4>
-              <p className="money minus">0.00</p>
+              <p className="money minus">{expense.toFixed(2) || " 0.00"}</p>
             </div>
           </div>
         </div>
         <div className="list-style">
-          <input type="text" placeholder="Search Transaction" onChange={handleSearchChange} />
+          <input
+            type="text"
+            placeholder="Search Transaction"
+            onChange={handleSearchChange}
+          />
           <h3>Transaction History</h3>
           <div className="scroller">
-            {
-              filteredArray.map((item, i) => {
-                return (
-                  <>
-                    <div className="history-box">
-                      <img className="hide" src={deleteIcon} alt="logo" onClick={() => deleteHistory(i)} />
-                      <ul key={i} className={item.amount < 0 ? 'list1' : 'list'}>
-                        <li className="plus">{item.description}</li>
-                        <span>{item.amount < 0 ? '-$' : '+$'}</span>
-                      </ul>
-                    </div>
-                  </>
-                )
-              })
-            }
+            {filteredArray.map((item, i) => {
+              return (
+                <>
+                  <div key={i} className="history-box">
+                    <img
+                    // className={item.amount < 0 ? "less" : "greater"}
+                      className="hide"
+                      src={deleteIcon}
+                      alt="logo"
+                      onClick={() => deleteHistory(i)}
+                    />
+                    <ul
+                      className={item.amount < 0 ? "less-then" : "greater-then"}
+                    >
+                      <li className="plus">{item.description}</li>
+                      <span>
+                        {item.amount < 0
+                          ? `-$ ${Math.abs(item.amount)}`
+                          : `+$ ${item.amount}`}
+                      </span>
+                    </ul>
+                  </div>
+                </>
+              );
+            })}
           </div>
         </div>
 
@@ -94,11 +111,12 @@ export const ExpenceTraker = () => {
                 id="description"
                 placeholder="Detail of Transaction"
                 required
-                {...register('description')}
+                {...register("description")}
               />
             </div>
             <div className="form-control">
-              <label for="transactionmount">Transaction Amount
+              <label for="transactionmount">
+                Transaction Amount
                 <br />
                 (negative - expense, positive - income)
               </label>
@@ -107,7 +125,7 @@ export const ExpenceTraker = () => {
                 id="transactionmount"
                 placeholder="Dollar value of Transaction"
                 required
-                {...register('amount')}
+                {...register("amount")}
               />
             </div>
             <button type="submit" className="btn">
@@ -119,5 +137,3 @@ export const ExpenceTraker = () => {
     </>
   );
 };
-
-
